@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thiệp mời cưới</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .card {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #d6336c;
+    }
+    .date {
+      font-size: 20px;
+      margin: 10px 0;
+      color: #444;
+    }
+    .countdown {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff0055;
+      margin: 20px 0;
+    }
+    .map a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #d6336c;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .map a:hover {
+      background: #ff4d88;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💌 Thiệp mời cưới 💌</h1>
+    <p>Trân trọng kính mời bạn đến dự lễ cưới của chúng tôi</p>
+    <div class="date">📅 10/10/2025 - 17:00</div>
+    <div class="date">📍 Nhà hàng ABC, Sóc Sơn, Hà Nội</div>
+    <div class="countdown" id="countdown"></div>
+    <div class="map">
+      <a href="https://maps.google.com" target="_blank">📍 Xem bản đồ</a>
+    </div>
+  </div>
+
+  <!-- Nhạc nền -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Script đếm ngược -->
+  <script>
+    const eventDate = new Date("Oct 10, 2025 17:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "🎉 Sự kiện đã diễn ra!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `⏳ Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+    }, 1000);
+  </script>
+</body>
+</html>
